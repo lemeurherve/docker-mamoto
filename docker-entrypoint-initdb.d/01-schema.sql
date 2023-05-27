@@ -1,10 +1,10 @@
 USE matomo;
 
--- MariaDB dump 10.19  Distrib 10.11.2-MariaDB, for debian-linux-gnu (x86_64)
+-- MariaDB dump 10.19  Distrib 10.11.3-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: matomo
 -- ------------------------------------------------------
--- Server version	10.11.2-MariaDB-1:10.11.2+maria~ubu2204
+-- Server version	10.11.3-MariaDB-1:10.11.3+maria~ubu2204
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1383,7 +1383,7 @@ CREATE TABLE `matomo_changes` (
   `link` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idchange`),
   UNIQUE KEY `unique_plugin_version_title` (`plugin_name`,`version`,`title`(100))
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2053,4 +2053,4 @@ CREATE TABLE `matomo_user_token_auth` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-27 17:08:39
+-- Dump completed on 2023-05-27 18:01:07

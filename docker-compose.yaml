@@ -13,7 +13,7 @@ services:
       MATOMO_DATABASE_USERNAME: root
       MATOMO_DATABASE_PASSWORD: my-secret-pw
       MATOMO_SALT: testsalt
-      MATOMO_TRUSTED_HOSTS: "localhost"
+      MATOMO_TRUSTED_HOSTS: "localhost:8080"
 
   db:
     image: "mariadb:10.11.3-jammy"

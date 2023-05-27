@@ -9,9 +9,9 @@ tables_prefix = "matomo_"
 charset = "utf8mb4"
 
 [General]
+enable_load_data_infile = 0
 salt = "$MATOMO_SALT"
-enable_load_data_infile=0
-# trusted_hosts
+#trusted_hosts
 
 [Plugins]
 Plugins[] = "Diagnostics"
@@ -144,4 +144,5 @@ PluginsInstalled[] = "PagePerformance"
 PluginsInstalled[] = "CustomDimensions"
 PluginsInstalled[] = "SecurityInfo"
 PluginsInstalled[] = "LoginOIDC"
+PluginsInstalled[] = "CoreVue"
 
