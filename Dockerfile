@@ -1,5 +1,8 @@
 FROM matomo:4.15.1-apache
 
+# As we are installing common packages we are ignoring the following rules
+# those are used within /download_plugins.sh
+# hadolint ignore=DL3008
 RUN set -ex && \
   apt-get update && \
   apt-get install -y --no-install-recommends \
