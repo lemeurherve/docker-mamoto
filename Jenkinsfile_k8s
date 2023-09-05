@@ -1,1 +1,1 @@
-parallelDockerUpdatecli([imageName: 'mamoto', rebuildImageOnPeriodicJob: false])
+parallelDockerUpdatecli([imageName: 'matomo', rebuildImageOnPeriodicJob: false])

@@ -14,7 +14,7 @@ if [ ! -e matomo.php ]; then
 fi
 
 
-perl -pi -e 's/Listen\s+80$/Listen 8080/g; s{<VirtualHost *:80>}{<VirtualHost *:8080>}g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/default.conf
+perl -pi -e 's/Listen\s+80$/Listen 8080/g; s{<VirtualHost *:80>}{<VirtualHost *:8080>}g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf
 
 envsubst < /config.ini.tmpl > /var/www/html/config/config.ini.php
 while IFS=',' read -ra MATOMO_TRUSTED_HOSTS; do
