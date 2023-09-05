@@ -1,10 +1,10 @@
 FROM matomo:4.15.1-apache
 
 RUN set -ex && \
-  apt-get update -y && \
+  apt-get update && \
   apt-get install -y --no-install-recommends \
-    gettext-base=0.21-12 \
-    wget=1.21.3-1+b1 && \
+    gettext-base \
+    wget && \
   apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
