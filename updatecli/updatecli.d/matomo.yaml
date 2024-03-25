@@ -1,0 +1,71 @@
+---
+name: Bump Matomo Version
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  lastVersion:
+    kind: githubrelease
+    name: Get the latest released Matomo version
+    spec:
+      owner: matomo-org
+      repository: matomo
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      versionfilter:
+        kind: semver
+
+conditions:
+  testDockerfile:
+    name: "Does the Dockerfile have a FROM instruction which key is matomo?"
+    kind: dockerfile
+    disablesourceinput: true
+    spec:
+      file: Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: matomo
+  checkDockerImagePublished:
+    name: "Is latest Matomo released published as a Docker image?"
+    kind: dockerimage
+    disablesourceinput: true
+    spec:
+      image: matomo
+      architectures:
+        - amd64
+        - arm64
+      tag: '{{ source "lastVersion" }}-apache'
+
+targets:
+  updateDockerfileVersion:
+    name: "Update the value of FROM matomo:<...> in the Dockerfile"
+    sourceid: lastVersion
+    kind: dockerfile
+    transformers:
+      - addsuffix: "-apache"
+    spec:
+      file: Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: matomo
+#     scmid: default
+
+# actions:
+#   default:
+#     kind: github/pullrequest
+#     scmid: default
+#     title: Bump Matomo Version to {{ source "lastVersion" }}
+#     spec:
+#       labels:
+#         - dependencies
+#         - matomo
